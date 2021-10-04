@@ -18,7 +18,7 @@ public class Wrapper {
 	
 	
 	public WebDriver chromeConnection () {
-		System.setProperty("webdriver.chrome.driver","./src/test/java/resources/driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","./src/test/resources/driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		return driver;
 		
@@ -55,5 +55,12 @@ public class Wrapper {
 	public void select(By Locator, String visibleText ) {
 		Select select = new Select(driver.findElement(Locator));
 		select.selectByVisibleText(visibleText);
+	}
+	
+	public void URL(String url) {
+		driver.get(url);
+	}
+	public void clear(By locator) {
+		driver.findElement(locator).clear();
 	}
 }
