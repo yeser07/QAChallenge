@@ -10,14 +10,14 @@ import org.xml.sax.Locator;
 
 public class ValetParkingTest {
 	private WebDriver driver;
-	Locators locator;
-	ValetParkingRate valet_parking_rate;
+	baseLocatorsFuntions baseLocator;
+
 
 	@Before
 	public void setUp() throws Exception {
-		valet_parking_rate = new ValetParkingRate(driver);
-		driver = valet_parking_rate.chromeConnection();
-		valet_parking_rate.URL("https://www.shino.de/parkcalc/");
+		baseLocator = new baseLocatorsFuntions(driver);
+		driver = baseLocator.chromeConnection();
+		baseLocator.URL("https://www.shino.de/parkcalc/");
 	}
 
 	@After
@@ -26,8 +26,13 @@ public class ValetParkingTest {
 
 	@Test
 	public void valetParkingxDayTest() throws InterruptedException {
-		valet_parking_rate.valetParkingxDay();
-		//assertEquals(locator.resultValetParkingxDay,locator.result);
+			baseLocator.clearForm();
+			baseLocator.dropDownListParkingLot("Valet Parking");
+			baseLocator.inputTextValues("10/05/2021", "10/06/2021", "12:00", "12:00");
+			baseLocator.setStartingTimePM();
+			baseLocator.setLeavingTimePM();
+			baseLocator.summitButton();
+			assertEquals(baseLocator.resultValetParkingxDay,baseLocator.expectedResult());
 	}
 
 }
