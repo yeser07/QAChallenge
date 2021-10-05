@@ -18,6 +18,7 @@ public class ValetParkingTest {
 		baseLocator = new baseLocatorsFuntions(driver);
 		driver = baseLocator.chromeConnection();
 		baseLocator.URL("https://www.shino.de/parkcalc/");
+		driver.manage().window().maximize();
 	}
 
 	@After

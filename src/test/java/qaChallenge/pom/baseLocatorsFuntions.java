@@ -135,7 +135,7 @@ public class baseLocatorsFuntions extends Wrapper {
 		}else if(days > 7 && hours*2<12) {
 			hours = hours*2;
 			weeks = days/7;
-			days = (((days*24)-(days*24))/24);
+			days = (((days*24)-(weeks*168))/24);
 			
 			int weeksValue = weeks*72;
 			int daysValue = days*12;
@@ -145,7 +145,7 @@ public class baseLocatorsFuntions extends Wrapper {
 		}else if(days > 7 && hours*2>12) {
 			hours = 12;
 			weeks = days/7;
-			days = (((days*24)-(days*24))/24);
+			days = (((days*24)-(weeks*168))/24);
 			
 			int weeksValue = weeks*72;
 			int daysValue = days*12;
