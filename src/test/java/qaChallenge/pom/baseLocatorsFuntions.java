@@ -20,6 +20,8 @@ public class baseLocatorsFuntions extends Wrapper {
 	
 	String resultValetParkingxDay ="$ 18.00";
 	String resultValetParkingFor5orLessH ="$ 12.00";
+	String resultShortTimeParkingHour ="$ 2.00";
+	String resultShortTimeParkingHourHalf ="$ 3.00";
 
 	public baseLocatorsFuntions(WebDriver driver) {
 		super(driver);
@@ -48,6 +50,13 @@ public class baseLocatorsFuntions extends Wrapper {
 		click(leavingTimePM);
 	}
 	
+	public void setStartingTimeAM() {
+		click(startingTimeAM);
+	}
+	public void setLeavingTimeAM() {
+		click(leavingTimeAM);
+	}
+	
 	public void summitButton() {
 		click(calculateButton);
 	}
@@ -66,6 +75,28 @@ public class baseLocatorsFuntions extends Wrapper {
 	public String expectedResult() {
 		String expectec_result = getText(answerResultMessage);
 		return expectec_result;
+	}
+	
+	public String shortTermDailyMax(int days, double hours) {
+		String currency ="$ ";
+		int hourxDay =24;
+		hours = hours*2;
+		String result;
+		double total;
+		if(days ==0 && hours >24) {
+			total = 24;
+			return result = currency + Double.toString(total)+"0";
+		}
+		
+		if(days>0 &&(hours*2>24)) {
+			days = days*hourxDay;
+			hours = 24;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}
+			days = days*hourxDay;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
 	}
 
 
