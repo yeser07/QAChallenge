@@ -99,5 +99,65 @@ public class baseLocatorsFuntions extends Wrapper {
 			return result = currency + Double.toString(total)+"0";
 	}
 
+	public String longTermGarageParking(int days, double hours) {
+		String currency ="$ ";
+		double total;
+		String result;
+		int weeks;
+		int valuexDay =12;
+		
+		if(days==0 && (hours*2 >12)) {
+			total = 12;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==1 && hours==0 || days==0 && (hours*2 >12)) {
+			total = 12;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days>=1 && days<7 && (hours*2<12)) {
+			days = days*valuexDay;
+			hours = hours*2;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days>=1 && days<7 && (hours*2>12)) {
+			days = days*valuexDay;
+			hours = 12;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==7 && hours==0) {
+			days = 72;
+			//hours = 0;
+			total = days;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==7 && (hours*2<12)) {
+			days = 72;
+			hours = hours*2;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days > 7 && hours*2<12) {
+			hours = hours*2;
+			weeks = days/7;
+			days = (((days*24)-(days*24))/24);
+			
+			int weeksValue = weeks*72;
+			int daysValue = days*12;
+			total = weeksValue+daysValue+hours;
+			
+			return result = currency + Double.toString(total)+"0";
+		}else if(days > 7 && hours*2>12) {
+			hours = 12;
+			weeks = days/7;
+			days = (((days*24)-(days*24))/24);
+			
+			int weeksValue = weeks*72;
+			int daysValue = days*12;
+			total = weeksValue+daysValue+hours;
+			
+			return result = currency + Double.toString(total)+"0";
+		}
+		hours = hours*2;
+		return result = currency + Double.toString(hours)+"0";
+		
+		
+	}
+	
 
 }
