@@ -19,6 +19,7 @@ public class baseLocatorsFuntions extends Wrapper {
 	By answerResultMessage = By.tagName("b");
 	
 	String resultValetParkingxDay ="$ 18.00";
+	String resultValetParkingFor5orLessH ="$ 12.00";
 
 	public baseLocatorsFuntions(WebDriver driver) {
 		super(driver);

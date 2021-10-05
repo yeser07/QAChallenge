@@ -22,6 +22,7 @@ public class ValetParkingTest {
 
 	@After
 	public void tearDown() throws Exception {
+		driver.quit();
 	}
 
 	@Test
@@ -33,6 +34,20 @@ public class ValetParkingTest {
 			baseLocator.setLeavingTimePM();
 			baseLocator.summitButton();
 			assertEquals(baseLocator.resultValetParkingxDay,baseLocator.expectedResult());
+			Thread.sleep(4000);
+	}
+	
+	@Test
+	public void valetParkingFor5hoursOrLess() throws InterruptedException {
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Valet Parking");
+		baseLocator.inputTextValues("10/05/2021", "10/05/2021", "12:00", "03:00");
+		baseLocator.setStartingTimePM();
+		baseLocator.setLeavingTimePM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.resultValetParkingFor5orLessH,baseLocator.expectedResult());
+		Thread.sleep(4000);
+
 	}
 
 }
