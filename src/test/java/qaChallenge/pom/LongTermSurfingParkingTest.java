@@ -84,7 +84,5 @@ public class LongTermSurfingParkingTest {
 		assertEquals(baseLocator.longTermSurfaceParking(16,8),baseLocator.expectedResult());
 		Thread.sleep(4000);
 	}
-	
-	
 
 }

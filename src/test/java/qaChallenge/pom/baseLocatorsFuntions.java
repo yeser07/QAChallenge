@@ -217,6 +217,63 @@ public class baseLocatorsFuntions extends Wrapper {
 		return result = currency + Double.toString(hours)+"0";		
 	}
 	
+	public String economyParking(int days, double hours) {
+		String currency ="$ ";
+		double total;
+		String result;
+		int weeks;
+		int valuexDay =9;
+		
+		if(days==0 && (hours*2 >9)) {
+			total = 9;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==1 && hours==0 || days==0 && (hours*2 >9)) {
+			total = 9;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days>=1 && days<7 && (hours*2<9)) {
+			days = days*valuexDay;
+			hours = hours*2;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days>=1 && days<7 && (hours*2>9)) {
+			days = days*valuexDay;
+			hours = 9;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==7 && hours==0) {
+			days = 54;
+			total = days;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days==7 && (hours*2<9)) {
+			days = 54;
+			hours = hours*2;
+			total = days + hours;
+			return result = currency + Double.toString(total)+"0";
+		}else if(days > 7 && hours*2<9) {
+			hours = hours*2;
+			weeks = days/7;
+			days = (((days*24)-(weeks*168))/24);
+			
+			int weeksValue = weeks*54;
+			int daysValue = days*9;
+			total = weeksValue+daysValue+hours;
+			
+			return result = currency + Double.toString(total)+"0";
+		}else if(days > 7 && hours*2>9) {
+			hours = 9;
+			weeks = days/7;
+			days = (((days*24)-(weeks*168))/24);
+			
+			int weeksValue = weeks*54;
+			int daysValue = days*9;
+			total = weeksValue+daysValue+hours;
+			
+			return result = currency + Double.toString(total)+"0";
+		}
+		hours = hours*2;
+		return result = currency + Double.toString(hours)+"0";		
+	}
+	
 	
 	
 	
