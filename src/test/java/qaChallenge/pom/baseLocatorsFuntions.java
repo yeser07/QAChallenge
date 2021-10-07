@@ -22,7 +22,9 @@ public class baseLocatorsFuntions extends Wrapper {
 	String resultValetParkingFor5orLessH ="$ 12.00";
 	String resultShortTimeParkingHour ="$ 2.00";
 	String resultShortTimeParkingHourHalf ="$ 3.00";
-
+	String errorLeavingDateBeforeStartingDate = "ERROR! YOUR LEAVING DATE OR TIME IS BEFORE YOUR STARTING DATE OR TIME";
+	String emtyField = "THIS FIELD CAN NOT BE EMPTY";
+	String formatDateError= "THIS FORMAT IS NOT CORRECT";
 	public baseLocatorsFuntions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub

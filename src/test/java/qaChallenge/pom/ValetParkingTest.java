@@ -50,5 +50,52 @@ public class ValetParkingTest {
 		Thread.sleep(4000);
 
 	}
+	
+	@Test 
+	public void valetParkingLeavingDateBeforeStartingDate() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Valet Parking");
+		baseLocator.inputTextValues("10/04/2021","10/03/2021","12:00", "12:00");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.errorLeavingDateBeforeStartingDate,baseLocator.expectedResult());
+		Thread.sleep(4000);
+	}
+	
+	@Test 
+	public void emptyDateFields() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Valet Parking");
+		baseLocator.inputTextValues("","10/03/2021","12:00", "12:00");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.emtyField,baseLocator.expectedResult());
+		Thread.sleep(4000);
+	}
+	
+	@Test 
+	public void emptyHoursFields() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Valet Parking");
+		baseLocator.inputTextValues("10/03/2021","10/03/2021","", "");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.emtyField,baseLocator.expectedResult());
+		Thread.sleep(4000);
+	}
+	@Test
+	public void formatDate() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Valet Parking");
+		baseLocator.inputTextValues("asdasdasdasd","asdasdasfgasfa","", "");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.formatDateError,baseLocator.expectedResult());
+		Thread.sleep(4000);
+	}
 
 }

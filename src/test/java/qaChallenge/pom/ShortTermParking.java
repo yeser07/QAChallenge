@@ -58,7 +58,18 @@ public class ShortTermParking {
 		baseLocator.summitButton();
 		assertEquals(baseLocator.shortTermDailyMax(0,13.5),baseLocator.expectedResult());
 		Thread.sleep(4000);
-		
+	}
+	
+	@Test 
+	public void shortTermParkingLeavingDateBeforeStartingDate() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Short-Term Parking");
+		baseLocator.inputTextValues("10/04/2021","10/03/2021","12:00", "12:00");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.errorLeavingDateBeforeStartingDate,baseLocator.expectedResult());
+		Thread.sleep(4000);
 	}
 	
 

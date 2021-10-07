@@ -120,5 +120,16 @@ public class LongTermGarageParkingTest {
 		assertEquals(baseLocator.longTermGarageParking(15,13),baseLocator.expectedResult());
 		Thread.sleep(4000);
 	}
+	@Test 
+	public void longTermGarageParkingLeavingDateBeforeStartingDate() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Long-Term Garage Parking");
+		baseLocator.inputTextValues("10/04/2021","10/03/2021","12:00", "12:00");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.errorLeavingDateBeforeStartingDate,baseLocator.expectedResult());
+		Thread.sleep(4000);
+	}
 
 }

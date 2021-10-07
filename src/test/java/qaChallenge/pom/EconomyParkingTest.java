@@ -22,7 +22,7 @@ public class EconomyParkingTest {
 
 	@After
 	public void tearDown() throws Exception {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
@@ -77,12 +77,24 @@ public class EconomyParkingTest {
 	public void economyParkingMoreThanAWeek() throws InterruptedException {
 		baseLocator.clearForm();
 		baseLocator.dropDownListParkingLot("Economy Parking");
-		baseLocator.inputTextValues("10/04/2021", "10/20/2021", "12:00","05:30");
+		baseLocator.inputTextValues("10/04/2021", "10/20/2021", "12:00","05:00");
 		baseLocator.setStartingTimeAM();
 		baseLocator.setLeavingTimeAM();
 		baseLocator.summitButton();
 		assertEquals(baseLocator.economyParking(16, 5),baseLocator.expectedResult());
 		Thread.sleep(4000);	
+	}
+	
+	@Test 
+	public void economyParkingLeavingDateBeforeStartingDate() throws InterruptedException{
+		baseLocator.clearForm();
+		baseLocator.dropDownListParkingLot("Economy Parking");
+		baseLocator.inputTextValues("10/04/2021","10/03/2021","12:00", "12:00");
+		baseLocator.setStartingTimeAM();
+		baseLocator.setLeavingTimeAM();
+		baseLocator.summitButton();
+		assertEquals(baseLocator.errorLeavingDateBeforeStartingDate,baseLocator.expectedResult());
+		Thread.sleep(4000);
 	}
 	
 
